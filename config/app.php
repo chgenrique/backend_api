@@ -176,9 +176,14 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Coders service providers
+         * Add - Coders service providers
          */
         Reliese\Coders\CodersServiceProvider::class,
+
+        /*
+         * Add - Passport service provider for authentication
+         */
+        Laravel\Passport\PassportServiceProvider::class,
     ],
 
     /*
