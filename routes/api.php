@@ -17,4 +17,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('categories','API\CategoryController@getAllCategories');
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+});
+
+Route::post('login', 'API\PassportController@login');
+Route::post('register', 'API\PassportController@register');
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('get-details', 'API\PassportController@getDetails');
+});
+
+Route::get('categories', 'API\CategoryController@getAllCategories');
